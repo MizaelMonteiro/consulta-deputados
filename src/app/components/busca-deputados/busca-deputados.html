@@ -1,0 +1,25 @@
+<h1 class="titulo">Buca de Deputados</h1>
+
+<form  [formGroup]="buscaDeputadoForm" (ngSubmit)="exibirRes()">
+    <div class="searchbar">
+        <input type="text"  formControlName="conteudoBusca">
+        
+    </div>
+
+    <div class="submitbtn">
+        <input type="submit" value="Buscar" [disabled]="buscaDeputadoForm.invalid" >
+    </div>
+</form>
+
+
+<div class="deputados">
+    @for(dep of deputados(); track dep.id) {
+            <div class="card-deputado">
+                <p><img [src]="dep.urlFoto"></p>
+                <p>{{dep.nome}}</p>
+                <p>
+                    {{dep.siglaPartido}} - {{dep.siglaUf}}
+                </p>
+            </div>
+        }
+</div>
